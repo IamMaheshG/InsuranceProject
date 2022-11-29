@@ -1,4 +1,4 @@
-.form {
+/* .form {
   width: 95%;
   max-width: 25rem;
   margin: 2rem auto;
@@ -42,4 +42,22 @@
 .action button:hover {
   background-color: #540d83;
   border-color: #540d83;
+} */
+
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex > div {
+  margin: 0 1rem 2rem 1rem;
+  text-align: center;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
 }
