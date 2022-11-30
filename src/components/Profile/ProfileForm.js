@@ -21,7 +21,7 @@ const ProfileForm = () => {
                   <strong>{user.first_name}</strong>
                 </p>
                 <p>{user.email}</p>
-                <img key={user.avatar} src={user.avatar} />
+                <img alt={user.first_name} key={user.avatar} src={user.avatar} />
               </div>
             );
           })}
