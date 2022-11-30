@@ -1,15 +1,20 @@
 import { Link, useHistory} from 'react-router-dom';
-import { useContext } from 'react';
-import AuthContext from '../store/Auth-Context';
+// import { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { authActions } from '../store/Auth-Slice';
+// import AuthContext from '../store/Auth-Context';
 import classes from './MainNavigation.module.css';
 
 const MainNavigation = () => {
-  const authContext = useContext(AuthContext)
-  const isLOggedIn= authContext.isLoggedIn;
+  // const authContext = useContext(AuthContext)
+  // const isLOggedIn= authContext.isLoggedIn;
+  const auth=useSelector(state=>state.auth);
+  const dispatch=useDispatch()
   const history=useHistory()
 
   const handleLogout = ()=> {
-    authContext.logout();
+   // authContext.logout();
+    dispatch(authActions.isLogout())
     history.replace('/')
   }
   return (
@@ -20,17 +25,17 @@ const MainNavigation = () => {
       <nav>
         <ul>
           {
-            !isLOggedIn && <li>
+            !auth.isLoggedIn && <li>
               <Link to='/auth'>Login</Link>
             </li>
           }
           {
-            isLOggedIn && <li>
+            auth.isLoggedIn && <li>
               <Link to='/profile'>Profile</Link>
             </li>
           }
           {
-            isLOggedIn &&
+            auth.isLoggedIn &&
             <li>
               <button onClick={handleLogout}>Logout</button>
             </li>

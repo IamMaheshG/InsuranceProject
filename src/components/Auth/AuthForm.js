@@ -1,6 +1,7 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import AuthContext from '../store/Auth-Context';
+import { authActions } from '../store/Auth-Slice';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
@@ -8,7 +9,7 @@ const AuthForm = () => {
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const authContext= useContext(AuthContext);
+  const dispatch=useDispatch()
   const history = useHistory();
 
   const switchAuthModeHandler = () => {
@@ -52,7 +53,7 @@ const AuthForm = () => {
         })
       }
     }).then((data) => {
-      authContext.logIn(data.idToken);
+      dispatch(authActions.isLogin(data.idToken));
       history.replace('/profile')
     }).catch((error) => {
       alert(error.message)
