@@ -55,9 +55,41 @@
 .flex > div {
   margin: 0 1rem 2rem 1rem;
   text-align: center;
+  color: white;
 }
 
 img {
   display: inline-block;
   max-width: 100%;
+}
+
+.formControl {
+  margin-bottom: 1rem;
+}
+
+.formControl input,
+.formControl label {
+  display: block;
+}
+
+.formControl label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.formControl input,
+.formControl select {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+  margin: auto;
+}
+
+.formControl input:focus {
+  outline: none;
+  border-color: #240370;
+  background-color: #e0d4fd;
 }
