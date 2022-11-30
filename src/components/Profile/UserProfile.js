@@ -1,11 +1,13 @@
 import ProfileForm from './ProfileForm';
+import InsuranceForm from './InsuranceForm';
 import classes from './UserProfile.module.css';
 
 const UserProfile = () => {
   return (
     <section className={classes.profile}>
-      <h1>Insurance Planning</h1>
       <ProfileForm />
+      <h1>Life-Insurance Quote Form</h1>
+      <InsuranceForm/>
     </section>
   );
 };

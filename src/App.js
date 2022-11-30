@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 // import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 // import AuthContext from './components/store/Auth-Context';
@@ -8,8 +8,8 @@ import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 
 function App() {
- //  const authContext = useContext(AuthContext);
-  const auth=useSelector((state)=>state.auth)
+  //  const authContext = useContext(AuthContext);
+  const auth = useSelector((state) => state.auth)
   console.log(auth.isLoggedIn)
   return (
     <Layout>
@@ -18,7 +18,7 @@ function App() {
           <HomePage />
         </Route>
         {
-          !auth.isLoggedIn && 
+          !auth.isLoggedIn &&
           <Route path='/auth'>
             <AuthPage />
           </Route>
@@ -29,9 +29,12 @@ function App() {
             <UserProfile />
           </Route>
         }
-        {/* <Route path='*'>
-            <Redirect to="/"/>
-        </Route> */}
+        {
+          !auth.isLoggedIn &&
+          <Route path='*'>
+            <Redirect to="/" />
+          </Route>
+        }
       </Switch>
     </Layout>
   );
