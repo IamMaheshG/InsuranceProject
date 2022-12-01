@@ -20,6 +20,10 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
+.gender label, .fieldSet legend {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
 
 .formControl input,
 .formControl select {
@@ -30,6 +34,7 @@
     width: 20rem;
     max-width: 100%;
     margin: auto;
+    text-align: center;
 }
 
 .formControl input:focus {
