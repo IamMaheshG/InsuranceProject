@@ -1,8 +1,11 @@
 import * as React from "react";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import classes from './ProfileForm.module.css';
 const ProfileForm = () => {
   const [users, setUsers] = React.useState([]);
   const [enteredName, setEnteredName] = React.useState('');
+  const [page, setPage] = React.useState(1);
 
   const handleEnteredUserName = (e) => {
     const name=e.target.value;
@@ -14,14 +17,18 @@ const ProfileForm = () => {
     e.preventDefault();
     setEnteredName('');
   }
-  const f = async () => {
-    const res = await fetch("https://reqres.in/api/users/");
+  const f = async (page) => {
+    const res = await fetch(`https://reqres.in/api/users?page=${page}`);
     const json = await res.json();
     setUsers(json.data);
   };
+
+  const handleChange = (event,value) => {
+    setPage(value);
+  };
   React.useEffect(() => {
-    f();
-  }, []);
+    f(page);
+  }, [page]);
   return (
     <div className="App">
       <form onSubmit={formSubmissionHandler}>
@@ -51,6 +58,11 @@ const ProfileForm = () => {
             );
           })}
       </div>
+      <div className={classes.pagination}>
+      <Stack spacing={2}>
+      <Pagination count={2} page={page} onChange={handleChange}/>
+    </Stack>
+    </div>
     </div>
   );
 }

@@ -87,6 +87,9 @@ img {
   max-width: 100%;
   margin: auto;
 }
+.pagination div {
+  align-items: center;
+}
 
 .formControl input:focus {
   outline: none;
